@@ -81,3 +81,8 @@ Step 5: Create Migration for Users (craete User table)
 # run `touch 20250909005356_create_user.rb`
 
 -> `db/migrate/20250909005356_create_user.rb`
+
+Step 6: Create Model with basic validations and encryptions.
+# model/user.rb
+# Warning* these encryption methods should not be used in production.
+# model includes :scope lambdas and business logic
