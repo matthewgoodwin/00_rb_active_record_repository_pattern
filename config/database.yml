@@ -1,0 +1,20 @@
+require 'yaml'
+
+DATABASE_CONFIG = {
+  'development' => {
+    'adapter' => 'postgresql',
+    'database' => 'rb_active_record_repository_pattern_development',
+    'username' => 'postgres',
+    'password' => 'password',
+    'host' => 'localhost',
+    'port' => 5432
+  },
+  'test' => {
+    'adapter' => 'postgresql',
+    'database' => 'rb_active_record_repository_pattern_test',
+    'username' = > 'postgres',
+    'password' => 'password',
+    'host' => 'localhost',
+    'port' => 5432
+  }
+}
