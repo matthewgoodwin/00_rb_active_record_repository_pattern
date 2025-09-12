@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
     #     end
     # end
 
+    # allows for easy 'chaining' of :scopes in User#Repository
     scope :active, -> { where(active: true) }
     scope :recent, -> { order(created_at: :desc) }
     scope :by_name, -> { order(:last_name, :first_name) }
@@ -56,9 +57,11 @@ class User < ActiveRecord::Base
     # CLASS METHODS
     
     # finder methods -> these could be in the USER#REPOSITORY:
-    def self.find_by_email(email)
-        find_by(email: email.downcase.strip)
-    end
+
+    # accessed directly in User#Repository:
+    # def self.find_by_email(email)
+    #     find_by(email: email.downcase.strip)
+    # end
 
     def self.search_by_name(query)
         where(
