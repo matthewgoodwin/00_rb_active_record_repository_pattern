@@ -14,8 +14,10 @@ class UserRepository
     end
     def find_by_email(email)
         # AVOID: redundant /wrappers; Call same `User.find_by_email`:
-        # @data_source.find_by_email(email) 
-        @data_source.find_by(email) # uses ActiveRecord Model `.find_by` method (DIRECTLY)
+        # @data_source.find_by_email(email)
+        
+        # uses ActiveRecord Model `.find_by` method (DIRECTLY)
+        @data_source.find_by(email: email.downcase.strip)
     end
 
     # :SCOPE lambda from User#Model
