@@ -15,7 +15,7 @@ class UserRepository
     def find_by_email(email)
         # AVOID: redundant /wrappers; Call same `User.find_by_email`:
         # @data_source.find_by_email(email)
-        
+
         # uses ActiveRecord Model `.find_by` method (DIRECTLY)
         @data_source.find_by(email: email.downcase.strip)
     end
@@ -37,5 +37,28 @@ class UserRepository
         @data_source.search_by_name(query)
     end
 
-    #  ADD PERSISTENCE METHODS (Data Access Logic) HERE!!
+    # NEW PERSISTENCE METHODS (Data Access Logic) HERE!!
+    def save_user(user)
+        if user.save
+            {success: true, user: user}
+        else
+            {success: false, errors: user.errors.full_messages}
+    end
+    def create_user(attributes)
+        user = @data_source.new(attributes)
+        save_user(user)
+    end
+
+    def update_user(user, attributes)
+        user.assign_attributes(attributes)
+        save_user(user) 
+    end
+    def delete_user(user)
+        user.destroy
+        {success: true}
+    rescue => e
+        {success: false, error: e.message}
+    end
+
+    # ADD COMPLEX QUERIES (Domain-specific Data Access)
 end

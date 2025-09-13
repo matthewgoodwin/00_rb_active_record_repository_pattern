@@ -87,3 +87,4 @@ class User < ActiveRecord::Base
     def normalize_email
         self.email = email.downcase.strip
     end
+end
