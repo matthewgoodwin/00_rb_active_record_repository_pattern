@@ -1,3 +1,5 @@
+# complex queries and data access for business logic/ intelligence:
+
 class UserRepository
     def initialize
         # initialize User Repo with the User Model
@@ -61,4 +63,29 @@ class UserRepository
     end
 
     # ADD COMPLEX QUERIES (Domain-specific Data Access)
+
+    def find_users_for_password_reset
+    end
+    
+    # BUSINESS LOGIC:
+
+    # complex queries for business actions:
+    # may combine :scope with complex query
+    def add_users_for_marketing_promo
+        # write complext combination here!
+    end
+
+    # AGGREGATION METHODS: (Business intel logic)
+
+    # used for business analytics and reports:
+    def user_count
+        @data_source.user_count
+    end
+    def find_users_registered_today
+        # simple & chainable: perhaps this query should be a :scope in the User#Model?
+        @data_source.where(created_at: Date.current.beginning_of_day.. Date.currente.end_of_day)
+    end
+    def user_by_registeration_month
+        @data_source.group("DATE_TRUNC('month', created_at)").count
+    end
 end

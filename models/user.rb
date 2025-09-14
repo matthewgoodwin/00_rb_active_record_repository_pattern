@@ -1,4 +1,5 @@
 # create the User model
+# * simple / reusable data access goes here!
 
 # ActiveRecord automatically maps the User model to the `users` table.
 # handles getters and setters methods
@@ -42,6 +43,7 @@ class User < ActiveRecord::Base
     scope :active, -> { where(active: true) }
     scope :recent, -> { order(created_at: :desc) }
     scope :by_name, -> { order(:last_name, :first_name) }
+    # ADD a new :scope for simple/reusable queries
 
     # INSTANCE METHODS
 
