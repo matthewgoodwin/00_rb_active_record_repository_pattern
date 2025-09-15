@@ -73,6 +73,7 @@ class UserRepository
     # may combine :scope with complex query
     def add_users_for_marketing_promo
         # write complext combination here!
+        @data_source.active.registered_today.joins(:orders).where("orders.total > 50")
     end
 
     # AGGREGATION METHODS: (Business intel logic)
@@ -82,8 +83,8 @@ class UserRepository
         @data_source.user_count
     end
     def find_users_registered_today
-        # simple & chainable: perhaps this query should be a :scope in the User#Model?
-        @data_source.where(created_at: Date.current.beginning_of_day.. Date.currente.end_of_day)
+        # A simple & chainable :scope in the User#Model?
+        @data_source.active.registered_today
     end
     def user_by_registeration_month
         @data_source.group("DATE_TRUNC('month', created_at)").count
