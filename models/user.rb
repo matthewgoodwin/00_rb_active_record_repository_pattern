@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
 
     # INSTANCE METHODS
 
+    def full_name
+        "#{first_name} #{last_name}".strip
+    end
+
     def initials
         return "#{:first_name[0]}. #{last_name[0]}".upcase
     end

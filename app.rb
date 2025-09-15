@@ -29,8 +29,39 @@ class App
         Database.establish_connection
 
         # run migrations
+        CreateUsers.new.up unless User.table_exists?
     end
     def demo_activerecord_pattern
+        puts "ACTIVERECORD!"
+        puts "*"*50
+        # create users with ActiveRecord Pattern
+        
+        user_1 = User.new(
+            first_name: "Charlie",
+            last_name: "Brown",
+            email: "charlie@activerecord.com",
+            password: "cb123_password"
+        )
+        user_1.save!
+
+        user_2 = User.new(
+            first_name: "Mary",
+            last_name: "Jane",
+            email: "mary@activerecord.com",
+            password: "mj123_password"
+        )
+        user_2.save!
+
+        # Demonstrate ActiveRecord user queries:
+        puts "ActiveRecord User Queries:"
+        puts "Total Users: #{User.count}"
+        puts "Recent Users: #{User.recent.limit(2)}"
+        puts "User By Name: #{User.by_name.pluck(:email)}"
+        user_found = User.find_by_email('mary@activerecord.com')
+        puts "User found: #{user_found&.full_name}"
+
+        # validations here:
+
     end
     def demo_repository_pattern  
     end
