@@ -86,3 +86,18 @@ Step 6: Create Model with basic validations and encryptions.
 # model/user.rb
 # Warning* these encryption methods should not be used in production.
 # model includes :scope lambdas and business logic
+# :scopes should contain simple queries that can be chained. 
+
+Step 7: Create the User#Repository. 
+
+# run `mkdir repository`
+# run `cd repository`
+# run `touch user_repository`
+# run `cd user_repository`
+# The User#Repository is initialized with the @data_source = User.
+# The document organizes User method calls into specific types:
+# Data, Domain, Business logic and business intelligence.
+# These calls/functions can be simple or complex, direct or wrappers.
+
+
+Step 8: Create application / entry point:
