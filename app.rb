@@ -57,12 +57,17 @@ class App
         puts "Total Users: #{User.count}"
         puts "Recent Users: #{User.recent.limit(2)}"
         puts "User By Name: #{User.by_name.pluck(:email)}"
+        puts "FINDER METHOD: Find By Email !"
         user_found = User.find_by_email('mary@activerecord.com')
         puts "User found: #{user_found&.full_name}"
 
         # validations here:
-
+        invalid_user = User.new(email: "invalid")
+        unless invalid_user.save
+            puts "Validation Error: #{invalid_user.errors.full_message}"
+        end
     end
+    
     def demo_repository_pattern  
     end
 end
