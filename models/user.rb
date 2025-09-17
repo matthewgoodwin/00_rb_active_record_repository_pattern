@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     scope :active, -> { where(active: true) }
     scope :recent, -> { order(created_at: :desc) }
     scope :by_name, -> { order(:last_name, :first_name) }
-    scope :registered_today -> { where(created_at: Date.current.all_day) }
+    scope :registered_today, -> { where(created_at: Date.current.all_day) }
     # ADD a new :scope for simple/reusable queries
 
     # INSTANCE METHODS
