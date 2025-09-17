@@ -29,7 +29,7 @@ class UserRepository
         @data_source.active.by_name
         # User.where(active:true).order(:last_name, :first_name)
     end
-    def find_recent(limit= 10)
+    def find_recent_users(limit= 10)
         @data_source.recent.limit(limit)
     end
 
