@@ -1,10 +1,11 @@
 # lib/database.rb
 require 'active_record'
+require_relative '../config/database'
 require 'yaml'
 
 class Database
     def self.establish_connection(environment = 'development')
-        config = DATABASE_CONFIG(environment)
+        config = DATABASE_CONFIG[environment]
         # puts "#{config['database']}"
         # puts "#{config['port']}"
 
@@ -14,7 +15,7 @@ class Database
 
         # test DB connectivity:
         begin
-            ActiveRecord:Base.connection.execute("SELECT 1")
+            ActiveRecord::Base.connection.execute("SELECT 1")
             puts "DB connection successful!"
         rescue => exception
             puts "DB connection failed #{exception.message}"
@@ -33,7 +34,7 @@ class Database
         ActiveRecord::Base.establish_connection(admin_config)
 
         begin
-            ActiveRecord:Base.connection.execute("CREATE DATABASE '#{config['database']}' ")
+            ActiveRecord::Base.connection.execute("CREATE DATABASE #{config['database']} ")
             puts "Database: #{config['database']} created!"
         rescue ActiveRecord::StatementInvalid => exception
             if exception.message.include?("already exists")

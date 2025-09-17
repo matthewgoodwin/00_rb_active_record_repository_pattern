@@ -101,3 +101,21 @@ Step 7: Create the User#Repository.
 
 
 Step 8: Create application / entry point:
+
+
+Step 9: Create a console helper:
+
+run `psql postgres` # determine PG permissions and password settings
+
+# while in PG check information:
+# user and permissions
+SELECT current_user;
+
+# can create databases?
+CREATE DATABASE test_connection;
+
+-- If successful, clean up
+DROP DATABASE test_connection;
+
+-- Exit psql
+\q

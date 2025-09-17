@@ -1,20 +1,27 @@
-require 'yaml'
+# MARKED FOR DELETED: REPLACED BY `config/database.rb`
 
-DATABASE_CONFIG = {
-  'development' => {
-    'adapter' => 'postgresql',
-    'database' => 'rb_active_record_repository_pattern_development',
-    'username' => 'postgres',
-    'password' => 'password',
-    'host' => 'localhost',
-    'port' => 5432
-  },
-  'test' => {
-    'adapter' => 'postgresql',
-    'database' => 'rb_active_record_repository_pattern_test',
-    'username' = > 'postgres',
-    'password' => 'password',
-    'host' => 'localhost',
-    'port' => 5432
-  }
-}
+# require 'yaml'
+
+# DATABASE_CONFIG = {
+#   'development' => {
+#     'adapter' => 'postgresql',
+#     'database' => 'rb_active_record_repository_pattern_development',
+#     'username' => 'my_pg_username',
+#     'password' => '',
+#     'host' => 'localhost',
+#     'port' => 5432
+#   },
+#   'test' => {
+#     'adapter' => 'postgresql',
+#     'database' => 'rb_active_record_repository_pattern_test',
+#     'username' => 'my_pg_username',
+#     'password' => '',
+#     'host' => 'localhost',
+#     'port' => 5432
+#   }
+# }
+
+# problem: YML scope now working with Ruby class scope..
+# Temporary (test) Solution 1: MOVED THIS DATABASE CONFIG to the `lib/database.rb` .
+# BEST Solution 2: create a `config/database.rb` store the information there.
+# this allows for access by the Database class..

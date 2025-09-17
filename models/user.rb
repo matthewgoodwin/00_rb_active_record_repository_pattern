@@ -12,8 +12,10 @@ class User < ActiveRecord::Base
     # validates(:first_name, :last_name, :email, {presence: true})
     
     validates :first_name, :last_name, :email, presence: true
-    validates :email, uniqueness: {case_sensitive: false}, format: {with: URI::MailTo::EMAIL_REGEXP}
-    validates :password, length: {minimum: 6}, allow_null: true
+    validates :email, 
+        uniqueness: { case_sensitive: false },
+        format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
+    validates :password, length: { minimum: 6 }, if: :password_present?
 
     # password is stored in memory; not stored in DB
     attr_accessor :password

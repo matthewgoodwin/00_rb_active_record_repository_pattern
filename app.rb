@@ -4,6 +4,7 @@
 
 require 'bundler/setup'
 require_relative 'lib/database'
+require_relative 'db/migrate/20250909005356_create_user.rb'
 require_relative 'models/user'
 require_relative 'repositories/user_repository'
 
@@ -29,8 +30,21 @@ class App
         Database.establish_connection
 
         # run migrations
-        CreateUsers.new.up unless User.table_exists?
+        # CreateUsers.new.up unless User.table_exists?
+        # run manually:
+        run_migrations
     end
+
+    def run_migrations
+        unless ActiveRecord::Base.connection.table_exists?(:users)
+            puts "Running Migrations..."
+            CreateUsers.new.up
+            puts "migration complete!"
+        else
+            puts "Table already exists. Skipping migration..."
+        end 
+    end
+
     def demo_activerecord_pattern
         puts "ACTIVERECORD!"
         puts "*"*50

@@ -12,7 +12,7 @@ class UserRepository
         # from `.find` from ActiveRecord
         @data_source.find(id)
     rescue ActiveRecord::RecordNotFound
-        nill
+        nil
     end
     def find_by_email(email)
         # AVOID: redundant /wrappers; Call same `User.find_by_email`:
@@ -45,6 +45,7 @@ class UserRepository
             {success: true, user: user}
         else
             {success: false, errors: user.errors.full_messages}
+        end
     end
     def create_user(attributes)
         user = @data_source.new(attributes)
