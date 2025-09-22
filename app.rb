@@ -4,7 +4,7 @@
 
 require 'bundler/setup'
 require_relative 'lib/database'
-require_relative 'db/migrate/20250909005356_create_user.rb'
+require_relative 'db/migrate/20250909005356_create_users.rb'
 require_relative 'models/user'
 require_relative 'repositories/user_repository'
 

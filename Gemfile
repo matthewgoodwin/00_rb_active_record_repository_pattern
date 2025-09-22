@@ -15,5 +15,5 @@ gem 'pg', '~> 1.5' # PostgreSQL adapter
 gem 'standalone_migrations'
 
 group :development do
-    gem 'pry' # debugging
+    gem 'pry'
 end

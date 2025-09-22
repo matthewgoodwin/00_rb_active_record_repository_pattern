@@ -3,7 +3,7 @@
 require_relative 'app'
 
 def setup_console
-  @app = App.new              # Create app instance  
+  @app = App.new              # Create app instance
   @user_repo = UserRepository.new  # Create repository instance
   
   puts "🔧 Console Ready!"
@@ -13,4 +13,9 @@ def setup_console
   puts "  User       - ActiveRecord model"
 end
 
-setup_console if __FILE__ == $0
+setup_console
+if __FILE__ == $0
+    require 'pry'
+    puts "Starting interactive console..."
+    binding.pry
+end
