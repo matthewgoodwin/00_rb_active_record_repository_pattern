@@ -4,6 +4,7 @@ require_relative 'app'
 
 def setup_console
   @app = App.new              # Create app instance
+  # @app.run
   @user_repo = UserRepository.new  # Create repository instance
   
   puts "🔧 Console Ready!"

@@ -76,10 +76,12 @@ class App
         puts "User found: #{user_found&.full_name}"
 
         # validations here:
-        invalid_user = User.new(email: "invalid")
-        unless invalid_user.save
-            puts "Validation Error: #{invalid_user.errors.full_message}"
-        end
+        # invalid_user = User.new(email: "invalid")
+        # if invalid_user.valid?
+        #     puts "user valid"
+        # else
+        #     puts "Validation Error: #{invalid_user.errors.full_messages.join(', ')}"
+        # end
     end
     
     def demo_repository_pattern
